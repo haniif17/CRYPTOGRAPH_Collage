@@ -30,7 +30,7 @@ def otp_encrypt(data, key):
 
 
 st.set_page_config(page_title="Project UTS | Daffa Syahdana", layout="centered")
-st.title("🔐 Kriptografi Dua Algoritma (OTP + Caesar Cipher)")
+st.title("Kriptografi Dua Algoritma (OTP + Caesar Cipher)")
 st.caption("Project by Muhammad Daffa Syahdana Haniif | A11.2023.15284")
 
 if 'cipher_data' not in st.session_state:
@@ -46,7 +46,7 @@ def clear_download_state():
 mode = st.radio("Pilih Mode Operasi:", ["Enkripsi", "Dekripsi"])
 
 
-# 🧩 ENKRIPSI 
+# ENKRIPSI 
 if mode == "Enkripsi":
     
     uploaded_file = st.file_uploader(
@@ -93,7 +93,7 @@ if mode == "Enkripsi":
         )
 
 
-# 🔓 DEKRIPSI 
+# DEKRIPSI 
 else:
     cipher_file = st.file_uploader("Upload cipher file (.bin)", type=["bin"])
     key_file = st.file_uploader("Upload key file (.bin)", type=["bin"])
@@ -111,11 +111,11 @@ else:
             try:
                 key = base64.b64decode(key_text)
             except Exception as e:
-                st.error("❌ Gagal decode base64 dari key! Pastikan key benar.")
+                st.error("Gagal decode base64 dari key! Pastikan key benar.")
                 st.stop()
 
             if len(cipher) != len(key):
-                st.error("❌ Panjang cipher dan key tidak sama!")
+                st.error("Panjang cipher dan key tidak sama!")
                 st.stop()
 
             plain = otp_encrypt(cipher, key)
@@ -132,4 +132,4 @@ else:
             try:
                 st.video(BytesIO(plain))
             except Exception:
-                st.warning("⚠️ File sudah didekripsi tapi tidak bisa diputar di browser. Coba download dan buka manual.")
+                st.warning("File sudah didekripsi tapi tidak bisa diputar di browser. Coba download dan buka manual.")
